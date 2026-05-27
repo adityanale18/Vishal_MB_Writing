@@ -14,17 +14,22 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Value("${spring.mail.username}")
+    private String mailFrom;
+
     @Value("${admin.email}")
     private String adminEmail;
 
     public void sendBookingNotification(Booking booking) {
-        if (adminEmail == null || adminEmail.contains("adityanale1831@gmail.com")) {
-            System.out.println("⚠️ Email not configured. Skipping notification for booking: " + booking.getName());
+        if (mailFrom == null || mailFrom.isBlank() || adminEmail == null || adminEmail.isBlank()) {
+            System.out.println("⚠️ Email sender or recipient not configured. Skipping notification for booking: " + booking.getName());
             return;
         }
         try {
             SimpleMailMessage message = new SimpleMailMessage();
+            message.setFrom(mailFrom);
             message.setTo(adminEmail);
+            message.setReplyTo(booking.getEmail());
             message.setSubject("New Booking Request - " + booking.getServiceName());
             message.setText(
                 "New booking received!\n\n" +
@@ -35,10 +40,12 @@ public class EmailService {
                 "Message     : " + (booking.getMessage() != null ? booking.getMessage() : "—") + "\n\n" +
                 "Login to admin panel to manage this booking."
             );
+            System.out.println("📧 Sending booking email from " + mailFrom + " to " + adminEmail);
             mailSender.send(message);
             System.out.println("✅ Email sent to " + adminEmail);
         } catch (Exception e) {
             System.err.println("❌ Email send failed: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
