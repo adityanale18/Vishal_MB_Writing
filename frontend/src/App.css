@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2 {
+  letter-spacing: 1px;
+}
+
+button {
+  background: gold;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
