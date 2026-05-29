@@ -40,9 +40,9 @@ function Footer() {
               { icon: <FaInstagram size={16} />, href: "https://www.instagram.com/adipatil_31/", label: "Instagram", color: "#E1306C" },
               { icon: <FaFacebookF size={16} />, href: "https://facebook.com", label: "Facebook", color: "#1877F2" },
               { icon: <FaWhatsapp size={16} />, href: "https://wa.me/919876543210", label: "WhatsApp", color: "#25D366" },
-              { icon: <FaTwitter size={16} />, href: "https://twitter.com", label: "Twitter", color: "#1DA1F2" },
-              // { icon: <FaLinkedinIn size={16} />, href: "https://linkedin.com", label: "LinkedIn", color: "#0A66C2" },
-              { icon: <FaYoutube size={16} />, href: "https://youtube.com", label: "YouTube", color: "#FF0000" },
+              // { icon: <FaTwitter size={16} />, href: "https://twitter.com", label: "Twitter", color: "#1DA1F2" },
+              // // { icon: <FaLinkedinIn size={16} />, href: "https://linkedin.com", label: "LinkedIn", color: "#0A66C2" },
+              // { icon: <FaYoutube size={16} />, href: "https://youtube.com", label: "YouTube", color: "#FF0000" },
             ].map(({ icon, href, label, color }) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
                 style={{
